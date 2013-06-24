@@ -9,3 +9,6 @@ default['passenger']['manage_module_conf'] = true
 default['passenger']['package']['name'] = nil
 # set package version to nil, the distro package may not be the same version
 default['passenger']['package']['version'] = nil
+
+# Ruby version management
+default['passenger']['gem_binary'] = nil

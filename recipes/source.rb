@@ -45,6 +45,7 @@ end
 
 gem_package "passenger" do
   version node['passenger']['version']
+  gem_binary node['passenger']['gem_binary']
 end
 
 execute "passenger_module" do
