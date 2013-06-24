@@ -12,3 +12,6 @@ default['passenger']['package']['version'] = nil
 
 # Ruby version management
 default['passenger']['gem_binary'] = nil
+
+# User
+default['passenger']['user'] = nil

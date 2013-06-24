@@ -56,4 +56,5 @@ end
 execute "passenger_module" do
   command "#{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto"
   creates node['passenger']['module_path']
+  user node['passenger']['user']
 end
