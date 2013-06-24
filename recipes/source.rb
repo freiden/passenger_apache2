@@ -48,7 +48,12 @@ gem_package "passenger" do
   gem_binary node['passenger']['gem_binary']
 end
 
+# execute "passenger_module" do
+#   command 'passenger-install-apache2-module --auto'
+#   creates node['passenger']['module_path']
+# end
+
 execute "passenger_module" do
-  command 'passenger-install-apache2-module --auto'
+  command "#{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto"
   creates node['passenger']['module_path']
 end
