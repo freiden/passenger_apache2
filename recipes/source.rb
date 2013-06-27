@@ -43,11 +43,18 @@ else
   end
 end
 
-gem_package "passenger" do
+## Original
+# gem_package "passenger" do
+#   version node['passenger']['version']
+# end
+
+
+rbenv_gem "passenger" do
   version node['passenger']['version']
-  gem_binary node['passenger']['gem_binary']
+  ruby_version node['passenger']['ruby_version']
 end
 
+## Original
 # execute "passenger_module" do
 #   command 'passenger-install-apache2-module --auto'
 #   creates node['passenger']['module_path']
