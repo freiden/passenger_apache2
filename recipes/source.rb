@@ -15,6 +15,7 @@
 # limitations under the License.
 
 include_recipe "build-essential"
+include_recipe 'rbenv'
 
 node.default['passenger']['apache_mpm']  = 'prefork'
 
@@ -51,7 +52,9 @@ end
 
 rbenv_gem "passenger" do
   version node['passenger']['version']
-  ruby_version node['passenger']['ruby_version']
+  rbenv_version node['passenger']['rbenv_version']
+  # user node['passenger']['rbenv_user']
+  # root_path node['passenger']['rbenv_root_path']
 end
 
 ## Original
@@ -60,8 +63,15 @@ end
 #   creates node['passenger']['module_path']
 # end
 
-execute "passenger_module" do
-  command "#{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto"
+# execute "passenger_module" do
+#   command "#{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto"
+#   creates node['passenger']['module_path']
+#   user node['passenger']['context_user']
+# end
+
+rbenv_script "passenger_module" do
+  code %{ #{node['passenger']['passenger_root_path']}/bin/passenger-install-apache2-module --auto }
   creates node['passenger']['module_path']
-  user node['passenger']['user']
+  # user node['passenger']['context_user']
+  # root_path node['passenger']['rbenv_root_path']
 end
