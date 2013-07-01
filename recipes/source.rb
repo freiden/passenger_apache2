@@ -70,7 +70,7 @@ end
 # end
 
 rbenv_script "passenger_module" do
-  code %{ #{node['passenger']['passenger_root_path']}/bin/passenger-install-apache2-module --auto }
+  code %{ #{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto }
   creates node['passenger']['module_path']
   # user node['passenger']['context_user']
   # root_path node['passenger']['rbenv_root_path']

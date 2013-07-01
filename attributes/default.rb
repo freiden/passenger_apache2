@@ -19,4 +19,4 @@ default['passenger']['rbenv_ruby_version'] = nil
 default['passenger']['rbenv_user'] = 'rbenv'
 default['passenger']['rbenv_version'] = 'global'
 default['passenger']['rbenv_root_path'] = nil
-default['passenger']['passenger_root_path'] = nil
+default['passenger']['ruby_bin'] = nil
