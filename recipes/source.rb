@@ -69,9 +69,20 @@ end
 #   user node['passenger']['context_user']
 # end
 
+# rbenv_script "passenger_module" do
+#   code %{ #{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto }
+#   creates node['passenger']['module_path']
+#   # user node['passenger']['context_user']
+#   # root_path node['passenger']['rbenv_root_path']
+# end
+log "Debut passenger_module >>>>>>>>>>>>>>>>>>>>>>"
 rbenv_script "passenger_module" do
-  code %{ #{node['passenger']['root_path']}/bin/passenger-install-apache2-module --auto }
+  rbenv_version node['passenger']['rbenv_version']
+  # code %{ passenger-install-apache2-module --auto }
+  code <<-EOH
+    which ruby
+    passenger-install-apache2-module --auto
+  EOH
   creates node['passenger']['module_path']
-  # user node['passenger']['context_user']
-  # root_path node['passenger']['rbenv_root_path']
 end
+log ">>>>>>>>>>>>>>>>>>>>>> Fin passenger_module"
