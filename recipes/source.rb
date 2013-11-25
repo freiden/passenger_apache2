@@ -63,11 +63,11 @@ end
 #   creates node['passenger']['module_path']
 # end
 
-log "Start of configuration of passenger_module" + "*"*25
+log "************************************* Start of configuration of passenger_module *************************************"
 rbenv_script "passenger_module" do
   rbenv_version node['passenger']['rbenv_version']
   code <<-EOH
     which ruby
     passenger-install-apache2-module_#{node['passenger']['version']}_ --auto
   EOH
-log "End of configuration of passenger_module" + "*"*25
+log "************************************* End of configuration of passenger_module *************************************"
